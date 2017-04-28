@@ -1,0 +1,20 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "dist",
+    "rewrites": [
+       {
+        "source": "/api/hello", "function": "helloWorld"
+      },
+      {
+        "source": "/api/reverse", "function": "reverseString"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
