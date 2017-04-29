@@ -9,6 +9,7 @@ const cssnano = require('cssnano');
 const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin, DefinePlugin, HashedModuleIdsPlugin } = require('webpack');
 const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin, SuppressExtractedTextChunksWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin, UglifyJsPlugin } = require('webpack').optimize;
+const NodeExternalsPlugin = require('webpack-node-externals');
 const { AotPlugin } = require('@ngtools/webpack');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
@@ -43,9 +44,14 @@ module.exports = {
 
   "output": {
     "path": path.join(process.cwd(), "functions"),
-    "filename": "[name].js",
+    "filename": "index.js",
     "libraryTarget": "commonjs",
   },
+  "externals": [
+    NodeExternalsPlugin({
+      whitelist: [/^@angular/]
+    })
+  ],
   "module": {
     "rules": [
       {
@@ -319,6 +325,7 @@ module.exports = {
     "process": true,
     "module": false,
     "clearImmediate": false,
-    "setImmediate": false
+    "setImmediate": false,
+    "firebase-functions": "empty"
   }
 };
