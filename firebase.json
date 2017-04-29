@@ -6,7 +6,7 @@
     "public": "dist",
     "rewrites": [
        {
-        "source": "/api/hello", "function": "helloWorld"
+        "source": "/api/hello", "function": "render"
       },
       {
         "source": "/api/reverse", "function": "reverseString"
