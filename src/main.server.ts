@@ -1,12 +1,14 @@
 import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { renderModuleFactory } from '@angular/platform-server';
-import { AppModuleNgFactory } from './app/app.module.ngfactory';
+import { AppServerModule } from './app/app.server';
+import { AppServerModuleNgFactory } from './app/app.server.ngfactory';
 import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
 }
 
-export { AppModuleNgFactory }
+console.log(AppServerModuleNgFactory)
+
+export { AppServerModuleNgFactory }
 // AppModuleNgFactory
